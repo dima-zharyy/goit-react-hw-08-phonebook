@@ -3,6 +3,7 @@ import * as React from 'react';
 import { AppBar, Box, Container, Toolbar } from '@mui/material';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import { NavLink } from 'react-router-dom';
+import { UserMenu } from 'components';
 
 export const AppMenu = () => {
   return (
@@ -10,6 +11,7 @@ export const AppMenu = () => {
       <AppBar position="static">
         <Container maxWidth="lg">
           <Toolbar disableGutters>
+            <UserMenu></UserMenu>
             <Box
               as="nav"
               sx={{
@@ -32,6 +34,7 @@ export const AppMenu = () => {
                   textDecoration: 'none',
                   '&.active': {
                     color: 'lime',
+                    borderBottom: '2px solid lime',
                   },
                 }}
               >
@@ -46,6 +49,7 @@ export const AppMenu = () => {
                   textDecoration: 'none',
                   '&.active': {
                     color: 'lime',
+                    borderBottom: '2px solid lime',
                   },
                 }}
               >
@@ -63,6 +67,7 @@ export const AppMenu = () => {
                   textDecoration: 'none',
                   '&.active': {
                     color: 'lime',
+                    borderBottom: '2px solid lime',
                   },
                 }}
               >
@@ -78,6 +83,8 @@ export const AppMenu = () => {
                   textDecoration: 'none',
                   '&.active': {
                     color: 'lime',
+
+                    borderBottom: '2px solid lime',
                   },
                 }}
               >

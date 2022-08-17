@@ -5,3 +5,4 @@ export * from 'components/ContactListItem/ContactListItem';
 export * from 'components/Filter/Filter';
 export * from 'components/Loader/Loader.jsx';
 export * from './AppMenu/AppMenu.jsx';
+export * from './UserMenu/UserMenu.jsx';
