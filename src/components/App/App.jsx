@@ -1,24 +1,28 @@
-import { ContactForm, ContactList, Filter } from 'components';
-
+import { Route, Routes } from 'react-router-dom';
+import { AppBar } from 'components';
 import {
-  AppContainer,
-  AppTitle,
-  AppSubTitle,
-  ContactsWrapper,
-} from './App.styled';
-
+  Home,
+  SignIn,
+  SignUp,
+  Phonebook,
+  Contacts,
+  AddContact,
+  NotExist,
+} from 'pages';
 
 export const App = () => {
   return (
-    <AppContainer>
-      <AppTitle>Phonebook</AppTitle>
-      <ContactForm />
-
-      <AppSubTitle>Contacts</AppSubTitle>
-      <ContactsWrapper>
-        <Filter />
-        <ContactList />
-      </ContactsWrapper>
-    </AppContainer>
+    <Routes>
+      <Route path="/" element={<AppBar />}>
+        <Route index element={<Home />} />
+        <Route path="sign-in" element={<SignIn />} />
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="phonebook" element={<Phonebook />}>
+          <Route index element={<Contacts />} />
+          <Route path="add-contact" element={<AddContact />} />
+        </Route>
+        <Route path="*" element={<NotExist />} />
+      </Route>
+    </Routes>
   );
 };
