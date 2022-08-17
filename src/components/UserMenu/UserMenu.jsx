@@ -15,6 +15,7 @@ export const UserMenu = () => {
       <Avatar color="secondary" sx={{ bgcolor: lime[500], mr: 1 }}>
         {userName[0]}
       </Avatar>
+
       <Typography
         variant="body2"
         as="h2"

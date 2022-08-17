@@ -6,3 +6,5 @@ export * from 'components/Filter/Filter';
 export * from 'components/Loader/Loader.jsx';
 export * from './AppMenu/AppMenu.jsx';
 export * from './UserMenu/UserMenu.jsx';
+export * from './SignUpForm/SignUpForm.jsx';
+export * from './SignInForm/SignInForm.jsx';
