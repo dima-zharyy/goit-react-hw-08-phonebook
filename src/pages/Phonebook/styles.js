@@ -1,5 +1,6 @@
 export const drawerWidth = { xs: '60px', sm: '30%', lg: '20%' };
-export const linkStyles = {
+
+export const linkBoxStyles = {
   p: 2,
   display: 'flex',
   alignItems: 'center',
@@ -11,6 +12,9 @@ export const linkStyles = {
     bgcolor: 'primary.main',
   },
 };
+
+export const linkStyles = { display: { xs: 'none', sm: 'block' } };
+
 export const drawerStyles = {
   width: drawerWidth,
   flexShrink: 0,
