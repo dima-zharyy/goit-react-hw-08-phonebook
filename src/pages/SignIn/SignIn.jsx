@@ -3,7 +3,7 @@ import { SignInForm } from 'components';
 
 export const SignIn = () => {
   return (
-    <Container sx={{ pt: 2 }}>
+    <Container sx={{ pb: 2 }}>
       <SignInForm />
     </Container>
   );

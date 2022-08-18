@@ -4,7 +4,7 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 export const AddContact = () => {
   return (
-    <Container>
+    <Container sx={{ pb: 2 }}>
       <ContactForm
         formText="Add new contact to your Phonebook"
         buttonText="Add contact"

@@ -3,7 +3,7 @@ import { SignUpForm } from 'components';
 
 export const SignUp = () => {
   return (
-    <Container sx={{ pt: 2 }}>
+    <Container sx={{ pb: 2 }}>
       <SignUpForm />
     </Container>
   );
