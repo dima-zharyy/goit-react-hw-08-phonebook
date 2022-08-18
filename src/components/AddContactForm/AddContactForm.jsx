@@ -1,7 +1,8 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
+import { Box, Button, TextField, Typography } from '@mui/material';
+import { titleStyles, formStyles, fieldStyles, buttonStyles } from './styles';
 
-export const ContactForm = ({ formText, buttonText, endIcon }) => {
+export const AddContactForm = ({ formText, buttonText, endIcon }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -13,22 +14,10 @@ export const ContactForm = ({ formText, buttonText, endIcon }) => {
 
   return (
     <>
-      <Typography
-        variant="h5"
-        as="h2"
-        sx={{ textAlign: 'center', mb: 3, fontWeight: 700 }}
-      >
+      <Typography variant="h5" as="h2" sx={titleStyles}>
         {formText}
       </Typography>
-      <Box
-        as="form"
-        autoComplete="off"
-        onSubmit={handleSubmit}
-        sx={{
-          width: { xs: '100%', sm: '70%', lg: '50%' },
-          m: '0 auto',
-        }}
-      >
+      <Box as="form" autoComplete="off" onSubmit={handleSubmit} sx={formStyles}>
         <TextField
           fullWidth
           required
@@ -37,7 +26,7 @@ export const ContactForm = ({ formText, buttonText, endIcon }) => {
           variant="outlined"
           value={name}
           onChange={e => setName(e.target.value)}
-          sx={{ mb: 2 }}
+          sx={fieldStyles}
         />
         <TextField
           fullWidth
@@ -47,13 +36,13 @@ export const ContactForm = ({ formText, buttonText, endIcon }) => {
           type="text"
           value={phone}
           onChange={e => setPhone(e.target.value)}
-          sx={{ mb: 2 }}
+          sx={fieldStyles}
         />
         <Button
           type="submit"
           variant="contained"
           endIcon={endIcon}
-          sx={{ display: 'flex', m: '0 auto' }}
+          sx={buttonStyles}
         >
           {buttonText}
         </Button>

@@ -1,9 +1,10 @@
-import { Box } from '@mui/material';
-import { ContactListItem } from 'components';
+import { useState } from 'react';
+import { Box, Modal } from '@mui/material';
+import { EditContactForm, ContactListItem } from 'components';
+import { modalStyles, listStyles } from './styles';
 // import { useSelector } from 'react-redux';
 // import { useGetContactsQuery } from 'redux/contacts/contactsApi';
 // import { getFilter } from 'redux/filter/filterSlice';
-
 const contacts = [
   {
     id: '1',
@@ -77,16 +78,19 @@ const contacts = [
   },
 ];
 
-const stylesList = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '8px',
-  m: '0 auto',
-};
-
-const isLoading = false;
+// const isLoading = false;
 
 export const ContactList = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = id => {
+    console.log(id);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   // const { data: contacts, isLoading } = useGetContactsQuery();
   // const filter = useSelector(getFilter);
   // const filteredContacts = !isLoading
@@ -96,13 +100,31 @@ export const ContactList = () => {
   //   : null;
 
   return (
-    <Box maxWidth={500} as="ul" sx={{ ...stylesList }}>
-      {contacts.map(({ id, name, phone }) => {
-        return <ContactListItem key={id} name={name} phone={phone} id={id} />;
-      })}
-    </Box>
-  );
+    <>
+      <Box maxWidth={500} as="ul" sx={listStyles}>
+        {contacts.map(({ id, name, phone }) => {
+          return (
+            <ContactListItem
+              key={id}
+              name={name}
+              phone={phone}
+              id={id}
+              onClick={handleOpenModal}
+            />
+          );
+        })}
+      </Box>
 
+      {showModal && (
+        <Modal open={showModal} onClose={handleCloseModal}>
+          <Box sx={modalStyles}>
+            <EditContactForm />
+          </Box>
+        </Modal>
+      )}
+    </>
+  );
+  // formText,  firstButtonText,  secondButtonText,  firstEndIcon,  secondEndIcon,
   // if (isLoading) {
   //   return <Loader />;
   // }

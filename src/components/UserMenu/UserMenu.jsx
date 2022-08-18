@@ -1,35 +1,37 @@
 import { Avatar, Box, Typography, Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { lime } from '@mui/material/colors';
+import {
+  menuWrapperStyles,
+  avatarStyles,
+  userNameStyles,
+  buttonStyles,
+  buttonTextStyles,
+} from './styles';
 
 const userName = 'Dima Zharyy';
 
 export const UserMenu = () => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <Avatar color="secondary" sx={{ bgcolor: lime[500], mr: 1 }}>
+    <Box sx={menuWrapperStyles}>
+      <Avatar color="secondary" sx={avatarStyles}>
         {userName[0]}
       </Avatar>
 
-      <Typography
-        variant="body2"
-        as="h2"
-        sx={{ whiteSpace: 'nowrap', mr: 1 }}
-      >{`${userName}`}</Typography>
+      <Typography variant="body2" as="h2" sx={userNameStyles}>
+        {`${userName}`}
+      </Typography>
 
       <Button
+        fullWidth
         disableElevation
         variant="contained"
         size="small"
         endIcon={<LogoutIcon />}
-        sx={{ border: '1px solid #fff', whiteSpace: 'nowrap' }}
+        sx={buttonStyles}
       >
-        Sign out
+        <Typography variant="body2" sx={buttonTextStyles}>
+          Sign out
+        </Typography>
       </Button>
     </Box>
   );
