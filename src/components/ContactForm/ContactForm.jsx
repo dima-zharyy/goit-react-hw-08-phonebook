@@ -1,8 +1,7 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import { useState } from 'react';
 
-export const ContactForm = () => {
+export const ContactForm = ({ formText, buttonText, endIcon }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -19,7 +18,7 @@ export const ContactForm = () => {
         as="h2"
         sx={{ textAlign: 'center', mb: 3, fontWeight: 700 }}
       >
-        Sign in your Phonebook
+        {formText}
       </Typography>
       <Box
         as="form"
@@ -53,10 +52,10 @@ export const ContactForm = () => {
         <Button
           type="submit"
           variant="contained"
-          endIcon={<SendIcon />}
+          endIcon={endIcon}
           sx={{ display: 'flex', m: '0 auto' }}
         >
-          Add contact
+          {buttonText}
         </Button>
       </Box>
     </>

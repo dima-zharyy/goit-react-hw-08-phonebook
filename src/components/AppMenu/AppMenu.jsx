@@ -27,7 +27,9 @@ export const AppMenu = () => {
     <>
       <AppBar
         position="fixed"
-        sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}
+        sx={{
+          zIndex: theme => theme.zIndex.drawer + 1,
+        }}
       >
         <Container maxWidth="lg">
           <Toolbar disableGutters>
@@ -61,7 +63,7 @@ export const AppMenu = () => {
         </Container>
       </AppBar>
 
-      <Box sx={{ display: 'flex', pt: 8 }}>
+      <Box sx={{ display: 'flex', pt: { xs: 8, sm: 8 } }}>
         <Outlet />
       </Box>
     </>

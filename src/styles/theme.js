@@ -6,4 +6,9 @@ export const theme = createTheme({
     primary: teal,
     secondary: lime,
   },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
+    },
+  },
 });
