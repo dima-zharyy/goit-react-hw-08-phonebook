@@ -18,55 +18,51 @@ const axiosBaseQuery =
     }
   };
 
-export const contactsApi = createApi({
-  reducerPath: 'contactsApi',
+export const authApi = createApi({
+  reducerPath: 'authApi',
   baseQuery: axiosBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com',
   }),
-  tagTypes: ['Contacts'],
+  tagTypes: ['User'],
   endpoints: build => ({
-    getContacts: build.query({
+    signUpUser: build.query({
       query() {
         return {
-          url: `/contacts`,
+          url: `/users/signup`,
+          method: 'POST',
+        };
+      },
+    }),
+    signInUser: build.query({
+      query() {
+        return {
+          url: `/users/login`,
+          method: 'POST',
+        };
+      },
+    }),
+    signOutUser: build.query({
+      query() {
+        return {
+          url: `/users/logout`,
+          method: 'POST',
+        };
+      },
+    }),
+    getCurrentUser: build.query({
+      query() {
+        return {
+          url: `/users/current`,
           method: 'GET',
         };
       },
-    }),
-    editContact: build.query({
-      query(body) {
-        return {
-          url: `/contacts`,
-          method: 'PATCH',
-          body,
-        };
-      },
-    }),
-    addContact: build.mutation({
-      query(body) {
-        return {
-          url: `/contacts`,
-          method: 'POST',
-          body,
-        };
-      },
-      invalidatesTags: ['Contacts'],
-    }),
-    deleteContact: build.mutation({
-      query(id) {
-        return {
-          url: `/contacts/${id}`,
-          method: 'DELETE',
-        };
-      },
-      invalidatesTags: ['Contacts'],
     }),
   }),
 });
 
 export const {
-  useGetContactsQuery,
-  useAddContactMutation,
-  useDeleteContactMutation,
-  useEditContactQuery,
-} = contactsApi;
+  useSignInUserQuery,
+  useSignOutUserQuery,
+  useSignUpUserQuery,
+  useGetCurrentUserQuery,
+} = authApi;

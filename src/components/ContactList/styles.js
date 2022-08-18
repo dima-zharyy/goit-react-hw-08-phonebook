@@ -12,7 +12,7 @@ export const modalStyles = {
   transform: 'translate(-50%, -50%)',
   maxWidth: 600,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  borderRadius: 2,
 };

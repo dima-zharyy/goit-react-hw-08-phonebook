@@ -9,3 +9,5 @@ export * from './AppMenu/AppMenu.jsx';
 export * from './UserMenu/UserMenu.jsx';
 export * from './SignUpForm/SignUpForm.jsx';
 export * from './SignInForm/SignInForm.jsx';
+export * from './AppMenu/AuthNav/AuthNav.jsx';
+export * from './AppMenu/MainNav/MainNav.jsx';

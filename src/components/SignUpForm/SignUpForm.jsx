@@ -28,7 +28,7 @@ export const SignUpForm = () => {
         <TextField
           fullWidth
           required
-          label="Name"
+          label="Login"
           type="text"
           variant="outlined"
           value={name}

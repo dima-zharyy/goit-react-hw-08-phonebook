@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { titleStyles, formStyles, fieldStyles, buttonStyles } from './styles';
 
-export const AddContactForm = ({ formText, buttonText, endIcon }) => {
+export const AddContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -15,7 +16,7 @@ export const AddContactForm = ({ formText, buttonText, endIcon }) => {
   return (
     <>
       <Typography variant="h5" as="h2" sx={titleStyles}>
-        {formText}
+        Add new contact to your Phonebook
       </Typography>
       <Box as="form" autoComplete="off" onSubmit={handleSubmit} sx={formStyles}>
         <TextField
@@ -41,10 +42,10 @@ export const AddContactForm = ({ formText, buttonText, endIcon }) => {
         <Button
           type="submit"
           variant="contained"
-          endIcon={endIcon}
+          endIcon={<PersonAddAltIcon />}
           sx={buttonStyles}
         >
-          {buttonText}
+          Add contact
         </Button>
       </Box>
     </>
