@@ -9,7 +9,7 @@ import {
   Contacts,
   AddContact,
   NotExist,
-} from 'pages';
+} from 'helpers/lazyImportPages.jsx';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 

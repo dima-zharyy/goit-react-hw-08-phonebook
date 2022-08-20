@@ -7,19 +7,19 @@ import { useNavigate } from 'react-router-dom';
 
 export const AddContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const [addContact] = useAddContactMutation();
   const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await addContact({ name, phone });
+      await addContact({ name, number });
       navigate('/phonebook/contacts');
     } catch (error) {}
 
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -41,11 +41,11 @@ export const AddContactForm = () => {
         <TextField
           fullWidth
           required
-          label="Phone"
+          label="Number"
           variant="outlined"
           type="text"
-          value={phone}
-          onChange={e => setPhone(e.target.value)}
+          value={number}
+          onChange={e => setNumber(e.target.value)}
           sx={fieldStyles}
         />
         <Button

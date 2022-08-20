@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import { AppBar, Box, Container, Toolbar } from '@mui/material';
-import { UserMenu, AuthNav, MainNav } from 'components';
+import { UserMenu, AuthNav, MainNav, Loader } from 'components';
 import { navStyles, appBarStyles, outletBoxStyles } from './styles.js';
 import { getSignStatus } from 'redux/auth/authSlice.js';
 import { useSelector } from 'react-redux';
+import { Suspense } from 'react';
 
 export const AppMenu = () => {
   const isSignedIn = useSelector(getSignStatus);
@@ -23,7 +24,9 @@ export const AppMenu = () => {
       </AppBar>
 
       <Box sx={outletBoxStyles}>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </Box>
     </>
   );

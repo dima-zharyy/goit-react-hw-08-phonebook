@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -8,15 +8,25 @@ import {
   fieldStyles,
   buttonsBoxStyles,
 } from './styles';
+import { useEditContactMutation } from 'redux/contacts/contactsApi';
 
-export const EditContactForm = () => {
+export const EditContactForm = ({ editId, editName, editNumber, onClose }) => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
+  const [editContact] = useEditContactMutation();
 
-  const handleSubmit = e => {
+  useEffect(() => {
+    setName(editName);
+    setNumber(editNumber);
+  }, [editName, editNumber]);
+
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log({ name, phone });
+    try {
+      await editContact({ editId, data: { name, number } });
+      onClose();
+    } catch (error) {}
   };
 
   return (
@@ -38,11 +48,11 @@ export const EditContactForm = () => {
         <TextField
           fullWidth
           required
-          label="Phone"
+          label="Number"
           variant="outlined"
           type="text"
-          value={phone}
-          onChange={e => setPhone(e.target.value)}
+          value={number}
+          onChange={e => setNumber(e.target.value)}
           sx={fieldStyles}
         />
 
@@ -61,6 +71,7 @@ export const EditContactForm = () => {
             type="button"
             variant="contained"
             endIcon={<ClearIcon />}
+            onClick={() => onClose()}
           >
             Cancel
           </Button>

@@ -13,11 +13,12 @@ import {
   itemStyles,
   contentBoxStyles,
   contentStyles,
-  phoneLinkStyles,
+  numberLinkStyles,
 } from './styles.js';
+import { useDeleteContactMutation } from 'redux/contacts/contactsApi.js';
 
-export const ContactListItem = ({ name, phone, id, onClick }) => {
-  // const [deleteContact, { isLoading }] = useDeleteContactMutation();
+export const ContactListItem = ({ name, number, id, onClick }) => {
+  const [deleteContact] = useDeleteContactMutation();
 
   return (
     <Paper as="li" elevation={2} sx={itemStyles}>
@@ -27,19 +28,27 @@ export const ContactListItem = ({ name, phone, id, onClick }) => {
         </Typography>
         <Typography
           as="a"
-          href={`tel:${phone}`}
-          sx={phoneLinkStyles}
+          href={`tel:${number}`}
+          sx={numberLinkStyles}
           color="primary"
           variant="body2"
         >
-          {phone}
+          {number}
         </Typography>
       </CardContent>
       <CardActions>
-        <IconButton onClick={() => onClick(id)} aria-label="edit" size="small">
+        <IconButton
+          onClick={() => onClick(id, name, number)}
+          aria-label="edit"
+          size="small"
+        >
           <EditIcon fontSize="inherit" />
         </IconButton>
-        <IconButton aria-label="delete" size="small">
+        <IconButton
+          onClick={() => deleteContact(id)}
+          aria-label="delete"
+          size="small"
+        >
           <DeleteIcon fontSize="inherit" />
         </IconButton>
       </CardActions>
@@ -47,7 +56,7 @@ export const ContactListItem = ({ name, phone, id, onClick }) => {
 
     // <ContactItem>
     //   <ContactTextWrapper>
-    //     <ContactName>{name}:</ContactName> <span>{phone}</span>
+    //     <ContactName>{name}:</ContactName> <span>{number}</span>
     //   </ContactTextWrapper>
     //   <Button
     //     type="button"
@@ -62,6 +71,6 @@ export const ContactListItem = ({ name, phone, id, onClick }) => {
 
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };

@@ -18,6 +18,6 @@ export const contentStyles = {
   fontWeight: '700',
 };
 
-export const phoneLinkStyles = {
+export const numberLinkStyles = {
   textDecoration: 'none',
 };
