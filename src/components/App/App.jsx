@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppMenu } from 'components';
 import {
@@ -9,8 +10,16 @@ import {
   AddContact,
   NotExist,
 } from 'pages';
+import { useDispatch } from 'react-redux';
+import { fetchCurrentUser } from 'redux/auth/authOperations';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<AppMenu />}>

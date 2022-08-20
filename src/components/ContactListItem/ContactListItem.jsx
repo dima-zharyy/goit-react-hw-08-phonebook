@@ -9,7 +9,12 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { itemStyles, contentBoxStyles, contentStyles } from './styles.js';
+import {
+  itemStyles,
+  contentBoxStyles,
+  contentStyles,
+  phoneLinkStyles,
+} from './styles.js';
 
 export const ContactListItem = ({ name, phone, id, onClick }) => {
   // const [deleteContact, { isLoading }] = useDeleteContactMutation();
@@ -20,7 +25,15 @@ export const ContactListItem = ({ name, phone, id, onClick }) => {
         <Typography variant="body2" sx={contentStyles}>
           {name}
         </Typography>
-        <Typography variant="body2">{phone}</Typography>
+        <Typography
+          as="a"
+          href={`tel:${phone}`}
+          sx={phoneLinkStyles}
+          color="primary"
+          variant="body2"
+        >
+          {phone}
+        </Typography>
       </CardContent>
       <CardActions>
         <IconButton onClick={() => onClick(id)} aria-label="edit" size="small">

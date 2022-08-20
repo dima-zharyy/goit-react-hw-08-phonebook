@@ -17,3 +17,7 @@ export const contentBoxStyles = {
 export const contentStyles = {
   fontWeight: '700',
 };
+
+export const phoneLinkStyles = {
+  textDecoration: 'none',
+};

@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { useState } from 'react';
 import {
   titleStyles,
   formStyles,
@@ -13,10 +13,12 @@ export const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log({ name, email, password });
+    setName('');
+    setPassword('');
+    setEmail('');
   };
 
   return (
