@@ -7,14 +7,27 @@ import {
   buttonStyles,
   buttonTextStyles,
 } from './styles';
-
-const userName = 'Dima Zharyy';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from 'redux/auth/authOperations';
+import { getUsername } from 'redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const UserMenu = () => {
+  const dispatch = useDispatch();
+  const userName = useSelector(getUsername);
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await dispatch(signOut());
+      navigate('/');
+    } catch (error) {}
+  };
+
   return (
     <Box sx={menuWrapperStyles}>
       <Avatar color="secondary" sx={avatarStyles}>
-        {userName[0]}
+        {userName[0].toUpperCase()}
       </Avatar>
 
       <Typography variant="body2" as="h2" sx={userNameStyles}>
@@ -28,6 +41,7 @@ export const UserMenu = () => {
         size="small"
         endIcon={<LogoutIcon />}
         sx={buttonStyles}
+        onClick={handleSignOut}
       >
         <Typography variant="body2" sx={buttonTextStyles}>
           Sign out

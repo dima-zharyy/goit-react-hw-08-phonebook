@@ -6,7 +6,7 @@ import { signIn, signOut, signUp, fetchCurrentUser } from './authOperations';
 const initialState = {
   user: { name: null, email: null },
   token: null,
-  isLoggedIn: false,
+  isSignedIn: false,
 };
 
 export const authSlice = createSlice({
@@ -16,21 +16,21 @@ export const authSlice = createSlice({
     [signUp.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isSignedIn = true;
     },
     [signIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isSignedIn = true;
     },
     [signOut.fulfilled](state, action) {
       state.user = { name: null, email: null };
       state.token = null;
-      state.isLoggedIn = false;
+      state.isSignedIn = false;
     },
     [fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
-      state.isLoggedIn = true;
+      state.isSignedIn = true;
     },
   },
 });
@@ -43,6 +43,6 @@ const persistConfig = {
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);
 
-export const getIsLoggedIn = state => state.auth.isLoggedIn;
+export const getSignStatus = state => state.auth.isSignedIn;
 
 export const getUsername = state => state.auth.user.name;

@@ -2,15 +2,24 @@ import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { titleStyles, formStyles, fieldStyles, buttonStyles } from './styles';
+import { useAddContactMutation } from 'redux/contacts/contactsApi';
+import { useNavigate } from 'react-router-dom';
 
 export const AddContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [addContact] = useAddContactMutation();
+  const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    try {
+      await addContact({ name, phone });
+      navigate('/phonebook/contacts');
+    } catch (error) {}
 
-    console.log({ name, phone });
+    setName('');
+    setPhone('');
   };
 
   return (
