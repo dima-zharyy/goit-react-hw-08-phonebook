@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { AppBar, Box, Container, Toolbar } from '@mui/material';
-import { UserMenu, AuthNav, MainNav, Loader } from 'components';
+import { UserMenu, AuthNav, MainNav } from 'components';
 import { navStyles, appBarStyles, outletBoxStyles } from './styles.js';
 import { getFetchingStatus, getSignStatus } from 'redux/auth/authSlice.js';
 import { useSelector } from 'react-redux';
@@ -26,7 +26,7 @@ export const AppMenu = () => {
             </Container>
           </AppBar>
           <Box sx={outletBoxStyles}>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={null}>
               <Outlet />
             </Suspense>
           </Box>

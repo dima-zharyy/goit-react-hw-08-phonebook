@@ -4,7 +4,6 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import { Outlet, NavLink } from 'react-router-dom';
 import { drawerStyles, linkBoxStyles, linkStyles } from './styles';
 import { Suspense } from 'react';
-import { Loader } from 'components';
 
 // width: { xs: '100%', sm: '70%', lg: '50%' },
 
@@ -25,7 +24,7 @@ export const Phonebook = () => {
         </Box>
       </Drawer>
 
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={null}>
         <Outlet />
       </Suspense>
     </>
