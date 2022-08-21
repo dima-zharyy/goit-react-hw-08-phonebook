@@ -15,7 +15,7 @@ export const AddContactForm = () => {
     e.preventDefault();
     try {
       await addContact({ name, number });
-      navigate('/phonebook/contacts');
+      navigate('/phonebook/contacts', { replace: true });
     } catch (error) {}
 
     setName('');

@@ -15,6 +15,7 @@ export const contactsApi = createApi({
           method: 'GET',
         };
       },
+      keepUnusedDataFor: 1,
       providesTags: ['Contacts'],
     }),
 

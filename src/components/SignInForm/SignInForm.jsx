@@ -9,20 +9,17 @@ import {
 } from './styles.js';
 import { useDispatch } from 'react-redux';
 import { signIn } from 'redux/auth/authOperations.js';
-import { useNavigate } from 'react-router-dom';
 
 export const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
 
     try {
-      await dispatch(signIn({ email, password }));
-      navigate('/phonebook/contacts');
+      dispatch(signIn({ email, password }));
     } catch (error) {
       alert(error);
     }

@@ -20,7 +20,7 @@ export const UserMenu = () => {
   const handleSignOut = async () => {
     try {
       await dispatch(signOut());
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (error) {}
   };
 

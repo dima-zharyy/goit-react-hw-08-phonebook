@@ -7,6 +7,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isSignedIn: false,
+  isFetchingCurrentUser: false,
 };
 
 export const authSlice = createSlice({
@@ -28,9 +29,16 @@ export const authSlice = createSlice({
       state.token = null;
       state.isSignedIn = false;
     },
+    [fetchCurrentUser.pending](state) {
+      state.isFetchingCurrentUser = true;
+    },
     [fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isSignedIn = true;
+      state.isFetchingCurrentUser = false;
+    },
+    [fetchCurrentUser.rejected](state) {
+      state.isFetchingCurrentUser = false;
     },
   },
 });
@@ -46,3 +54,5 @@ export const authReducer = persistReducer(persistConfig, authSlice.reducer);
 export const getSignStatus = state => state.auth.isSignedIn;
 
 export const getUsername = state => state.auth.user.name;
+
+export const getFetchingStatus = state => state.auth.isFetchingCurrentUser;

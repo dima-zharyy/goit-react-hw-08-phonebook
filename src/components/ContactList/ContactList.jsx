@@ -1,31 +1,36 @@
-import { useState } from 'react';
 import { Box, Modal } from '@mui/material';
-import { EditContactForm, ContactListItem } from 'components';
+import {
+  EditContactForm,
+  ContactListItem,
+  EmptyPhonebookMsg,
+} from 'components';
 import { modalStyles, listStyles } from './styles';
 import { useGetContactsQuery } from 'redux/contacts/contactsApi';
+import { useSelector } from 'react-redux';
+import { getFilter } from 'redux/filter/filterSlice';
+import { useHandleModal } from 'hooks/useHandleModal';
 
 export const ContactList = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [editName, setEditName] = useState('');
-  const [editNumber, setEditNumber] = useState('');
-  const [editId, setEditId] = useState('');
+  const {
+    showModal,
+    editName,
+    editId,
+    editNumber,
+    handleOpenModal,
+    handleCloseModal,
+  } = useHandleModal();
+
   const { data: contacts } = useGetContactsQuery();
+  const filterValue = useSelector(getFilter);
 
-  const handleOpenModal = (id, name, number) => {
-    setEditName(name);
-    setEditNumber(number);
-    setEditId(id);
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  const filteredContacts = contacts?.filter(contact =>
+    contact.name.toLowerCase().includes(filterValue.toLowerCase())
+  );
 
   return (
     <>
       <Box maxWidth={500} as="ul" sx={listStyles}>
-        {contacts?.map(({ id, name, number }) => {
+        {filteredContacts?.map(({ id, name, number }) => {
           return (
             <ContactListItem
               key={id}
@@ -37,6 +42,8 @@ export const ContactList = () => {
           );
         })}
       </Box>
+
+      {contacts?.length === 0 && <EmptyPhonebookMsg />}
 
       {showModal && (
         <Modal open={showModal} onClose={handleCloseModal}>

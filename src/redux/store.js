@@ -10,9 +10,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { filterReducer } from './filter/filterSlice';
 
 export const store = configureStore({
   reducer: {
+    filter: filterReducer,
     auth: authReducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
   },
