@@ -1,4 +1,4 @@
-export const drawerWidth = { xs: '60px', sm: '30%', lg: '20%' };
+export const drawerWidth = { xs: '60px', sm: '200px', lg: '280px' };
 
 export const linkBoxStyles = {
   p: 2,

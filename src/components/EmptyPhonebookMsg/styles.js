@@ -1,14 +1,15 @@
-export const wrapBox = { textAlign: 'center' };
-
-export const titleStyles = { textAlign: 'center', fontWeight: 700 };
+export const titleStyles = {
+  textAlign: 'center',
+  fontSize: { sm: '24px' },
+  fontWeight: 700,
+};
 
 export const boxStyles = {
-  // width: { xs: '100%', sm: '70%', lg: '50%' },
-  // m: '0 auto',
-  display: 'inline-flex',
+  width: '100%',
   flexDirection: 'column',
+  display: 'flex',
   justifyContent: 'center',
-  // alignItems: 'center',
+  alignItems: 'center',
   m: '0 auto',
   gap: 2,
 };
