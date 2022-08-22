@@ -9,6 +9,7 @@ import {
   buttonsBoxStyles,
 } from './styles';
 import { useEditContactMutation } from 'redux/contacts/contactsApi';
+import { notify } from 'components';
 
 export const EditContactForm = ({ editId, editName, editNumber, onClose }) => {
   const [name, setName] = useState('');
@@ -25,8 +26,12 @@ export const EditContactForm = ({ editId, editName, editNumber, onClose }) => {
 
     try {
       await editContact({ editId, data: { name, number } });
+      notify('Contact edited successfully', 'ok');
       onClose();
-    } catch (error) {}
+    } catch (error) {
+      notify(`Something went wrong! Try again`, 'fail');
+      console.log(error);
+    }
   };
 
   return (

@@ -4,6 +4,7 @@ import { titleStyles, formStyles, fieldStyles, buttonStyles } from './styles';
 import { useAddContactMutation } from 'redux/contacts/contactsApi';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'hooks/useLocalStorage';
+import { notify } from 'components';
 
 const STORAGE_KEY_NAME = 'add-contact-name';
 const STORAGE_KEY_NUMBER = 'add-contact-number';
@@ -21,8 +22,12 @@ export const AddContactForm = () => {
     e.preventDefault();
     try {
       await addContact({ name, number });
+      notify(`${name} added to your Phonebook`, 'ok');
       navigate('/phonebook/contacts', { replace: true });
-    } catch (error) {}
+    } catch (error) {
+      notify(`Something went wrong! Try again`, 'fail');
+      console.log(error);
+    }
 
     setName('');
     setNumber('');
