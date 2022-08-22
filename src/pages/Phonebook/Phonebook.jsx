@@ -5,7 +5,6 @@ import { Outlet, NavLink } from 'react-router-dom';
 import { drawerStyles, linkBoxStyles, linkStyles } from './styles';
 import { Suspense } from 'react';
 
-
 export const Phonebook = () => {
   return (
     <>

@@ -1,7 +1,10 @@
+import { useDocumentTitle } from 'hooks/useDocumentTitle';
 import { Link } from 'react-router-dom';
 import css from './NotExist.module.css';
 
 export const NotExist = () => {
+  useDocumentTitle('404');
+
   return (
     <section className={css.page_404}>
       <div className={css.four_zero_four_bg}>
