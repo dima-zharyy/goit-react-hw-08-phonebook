@@ -1,13 +1,19 @@
-import { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { titleStyles, formStyles, fieldStyles, buttonStyles } from './styles';
 import { useAddContactMutation } from 'redux/contacts/contactsApi';
 import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from 'hooks/useLocalStorage';
+
+const STORAGE_KEY_NAME = 'add-contact-name';
+const STORAGE_KEY_NUMBER = 'add-contact-number';
 
 export const AddContactForm = () => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, number, setName, setNumber] = useLocalStorage(
+    STORAGE_KEY_NAME,
+    STORAGE_KEY_NUMBER,
+    ''
+  );
   const [addContact] = useAddContactMutation();
   const navigate = useNavigate();
 

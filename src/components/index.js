@@ -12,3 +12,4 @@ export * from './SignInForm/SignInForm.jsx';
 export * from './AppMenu/AuthNav/AuthNav.jsx';
 export * from './AppMenu/MainNav/MainNav.jsx';
 export * from './EmptyPhonebookMsg/EmptyPhonebookMsg.jsx';
+export * from './Dashbord/Dashbord.jsx';
