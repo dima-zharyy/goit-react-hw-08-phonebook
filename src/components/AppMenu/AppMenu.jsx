@@ -9,6 +9,7 @@ import { Suspense } from 'react';
 export const AppMenu = () => {
   const isSignedIn = useSelector(getSignStatus);
   const isFetchingCurrentUser = useSelector(getFetchingStatus);
+  console.log(isSignedIn);
 
   return (
     <>
