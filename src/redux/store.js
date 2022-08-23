@@ -11,10 +11,12 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { filterReducer } from './filter/filterSlice';
+import { themeReducer } from './theme/themeSlice';
 
 export const store = configureStore({
   reducer: {
     filter: filterReducer,
+    theme: themeReducer,
     auth: authReducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
   },

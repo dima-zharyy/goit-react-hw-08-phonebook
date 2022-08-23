@@ -1,11 +1,21 @@
 import { createTheme } from '@mui/material/styles';
-import { teal, lime } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 
-export const theme = createTheme({
+export const darkTheme = createTheme({
   palette: {
-    // mode: 'dark',
+    mode: 'dark',
     primary: teal,
-    secondary: lime,
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
+    },
+  },
+});
+
+export const lightTheme = createTheme({
+  palette: {
+    primary: teal,
   },
   mixins: {
     toolbar: {

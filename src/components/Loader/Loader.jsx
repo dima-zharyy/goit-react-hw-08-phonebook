@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-// import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export const Loader = () => {
