@@ -18,19 +18,23 @@ export const AddContactForm = () => {
   const [addContact] = useAddContactMutation();
   const navigate = useNavigate();
 
+  const resetForm = () => {
+    setName('');
+    setNumber('');
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     try {
+      resetForm();
       await addContact({ name, number });
       notify(`${name} added to your Phonebook`, 'ok');
-      navigate('/phonebook/contacts', { replace: true });
     } catch (error) {
       notify(`Something went wrong! Try again`, 'fail');
       console.log(error);
+    } finally {
+      navigate('/phonebook/contacts', { replace: true });
     }
-
-    setName('');
-    setNumber('');
   };
 
   return (

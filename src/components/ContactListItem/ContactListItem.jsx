@@ -1,5 +1,3 @@
-// import { useDeleteContactMutation } from 'redux/contacts/contactsApi';
-import PropTypes from 'prop-types';
 import {
   Typography,
   IconButton,
@@ -7,15 +5,18 @@ import {
   CardActions,
   Paper,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 import {
   itemStyles,
   contentBoxStyles,
   contentStyles,
   numberLinkStyles,
 } from './styles.js';
+
 import { useDeleteContactMutation } from 'redux/contacts/contactsApi.js';
+import PropTypes from 'prop-types';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactListItem = ({ name, number, id, onClick }) => {
   const [deleteContact] = useDeleteContactMutation();
@@ -53,19 +54,6 @@ export const ContactListItem = ({ name, number, id, onClick }) => {
         </IconButton>
       </CardActions>
     </Paper>
-
-    // <ContactItem>
-    //   <ContactTextWrapper>
-    //     <ContactName>{name}:</ContactName> <span>{number}</span>
-    //   </ContactTextWrapper>
-    //   <Button
-    //     type="button"
-    //     // disabled={isLoading}
-    //     // onClick={() => deleteContact(id)}
-    //   >
-    //     {/* {isLoading ? 'Deleting...' : 'Delete'} */}
-    //   </Button>
-    // </ContactItem>
   );
 };
 
@@ -73,4 +61,5 @@ ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

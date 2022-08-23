@@ -10,6 +10,7 @@ import {
 } from './styles';
 import { useEditContactMutation } from 'redux/contacts/contactsApi';
 import { notify } from 'components';
+import PropTypes from 'prop-types';
 
 export const EditContactForm = ({ editId, editName, editNumber, onClose }) => {
   const [name, setName] = useState('');
@@ -84,4 +85,11 @@ export const EditContactForm = ({ editId, editName, editNumber, onClose }) => {
       </Box>
     </>
   );
+};
+
+EditContactForm.propTypes = {
+  editId: PropTypes.string.isRequired,
+  editName: PropTypes.string.isRequired,
+  editNumber: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
