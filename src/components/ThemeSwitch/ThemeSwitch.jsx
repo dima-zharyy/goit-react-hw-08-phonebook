@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { FormGroup, FormControlLabel, Switch } from '@mui/material';
+import { useState } from 'react';
 
 // const light = {
 //   palette: {
