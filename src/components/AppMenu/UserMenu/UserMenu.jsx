@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'redux/auth/authOperations';
 import { getUsername } from 'redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { notify } from 'components';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,10 @@ export const UserMenu = () => {
     try {
       await dispatch(signOut());
       navigate('/', { replace: true });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      notify(`Something went wrong! Try again`, 'fail');
+    }
   };
 
   return (

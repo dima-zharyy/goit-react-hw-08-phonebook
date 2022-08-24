@@ -58,7 +58,7 @@ export const AddContactForm = () => {
           required
           label="Number"
           variant="outlined"
-          type="text"
+          type="tel"
           value={number}
           onChange={e => setNumber(e.target.value)}
           sx={fieldStyles}
