@@ -4,7 +4,7 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import { NavLink } from 'react-router-dom';
 import { drawerStyles, linkBoxStyles, linkStyles } from './styles';
 
-export const Dashboard = () => {
+export const Sidebar = () => {
   return (
     <Drawer as="aside" variant="permanent" sx={drawerStyles}>
       <Toolbar />
